@@ -1,2 +1,2 @@
-# HelloFlutter
-A Hello World demo for Flutter
+# HelloVue
+A Hello World demo for Vue
