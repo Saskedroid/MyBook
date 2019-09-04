@@ -9,6 +9,7 @@
 * [axios](http://www.axios-js.com/zh-cn/docs/)
 * [Koa](https://koa.bootcss.com/)
 * [mongoose](http://mongoosejs.net/docs/guide.html)
+* [normalize.css](https://github.com/necolas/normalize.css)
 
 ## Build Setup
 
@@ -25,4 +26,4 @@
 
 ## Status
 
-Progress: 30%
+Progress: 33%

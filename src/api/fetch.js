@@ -5,6 +5,8 @@ const LOGIN = '/login'
 const GET_BOOKS_LIST = '/getBooksList'
 const GET_BOOK_DETAIL = '/getBookDetail'
 const ADD_BOOK = '/addBook'
+const EDIT_BOOK = '/editBook'
+const DELETE_BOOK = '/deleteBook'
 const REPORT_TOTAL = '/report/total'
 const GET_TAGS_LIST = '/getTagsList'
 
@@ -53,6 +55,35 @@ export const fetch = {
       summary: summary
     }
     postRequest(ADD_BOOK, data, callback)
+  },
+  // 编辑图书
+  apiEditBook: function(id, title, origin_title, isbn, author, translator, publisher, pubdate, category, tags, series, binding, pages, price, memo, summary, callback) {
+    let data = {
+      id: id,
+      title: title,
+      origin_title: origin_title,
+      isbn: isbn,
+      author: author,
+      translator: translator,
+      publisher: publisher,
+      pubdate: pubdate,
+      category: category,
+      tags: tags,
+      series: series,
+      binding: binding,
+      pages: pages,
+      price: price,
+      memo: memo,
+      summary: summary
+    }
+    postRequest(EDIT_BOOK, data, callback)
+  },
+  // 删除图书
+  apiDeleteBook: function(id, callback) {
+    let data = {
+      id: id
+    }
+    postRequest(DELETE_BOOK, data, callback)
   },
   // 数据统计
   apiReportTotal: function(callback) {

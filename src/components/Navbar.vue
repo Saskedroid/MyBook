@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col :span="6" :offset="2" class="logo">
-      <img src="/static/images/logo.png">
+      <svg-icon icon-class="book" className="icon"></svg-icon>
       <h1>图书管理系统</h1>
     </el-col>
     <el-col :span="2" :offset="12" class="button" v-show="showClose">
@@ -27,6 +27,10 @@ export default {
 </script>
 
 <style scoped>
+  .icon {
+    width: 2em !important;
+    height: 2em !important;
+  }
 .el-row {
   background-color: #545c64;
   color: #fff;
@@ -35,9 +39,6 @@ export default {
   display: flex;
   align-items: center;
   padding: 8px;
-}
-.el-row .logo img {
-  height: 42px;
 }
 .el-row .logo h1 {
   font-size: 18px;

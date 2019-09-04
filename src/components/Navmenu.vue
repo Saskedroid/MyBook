@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col :span="8" :offset="2" class="logo">
-      <img src="/static/images/logo.png">
+      <svg-icon icon-class="book" className="icon"></svg-icon>
       <h1>图书管理系统</h1>
     </el-col>
     <el-col :span="10">
@@ -18,9 +18,17 @@
       </el-menu>
     </el-col>
     <el-col :span="2" class="button">
-      <el-button type="text" @click="logout">
-        <i class="el-icon-error"></i>&nbsp;退出
-      </el-button>
+      <el-dropdown trigger="click" @command="handleCommand">
+        <span class="el-dropdown-link">
+          菜单<i class="el-icon-arrow-down el-icon--right"></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item icon="el-icon-warning-outline" command="a">修改资料</el-dropdown-item>
+          <el-dropdown-item icon="el-icon-circle-check" command="b">修改密码</el-dropdown-item>
+          <el-dropdown-item icon="el-icon-circle-close" command="c" divided>退出</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+      
     </el-col>
   </el-row>
 </template>
@@ -37,6 +45,13 @@ export default {
     };
   },
   methods: {
+    handleCommand(command) {
+      switch (command) {
+        case 'c':
+          this.logout();
+          break;
+      }
+    },
     logout() {
       this.$confirm("是否退回登录页面？", "提示", {
         type: "warning"
@@ -51,6 +66,10 @@ export default {
 </script>
 
 <style scoped>
+.icon {
+  width: 2em !important;
+  height: 2em !important;
+}
 .el-row {
   background-color: #545c64;
   color: #fff;
@@ -59,9 +78,6 @@ export default {
   display: flex;
   align-items: center;
   padding: 8px;
-}
-.el-row .logo img {
-  height: 42px;
 }
 .el-row .logo h1 {
   font-size: 18px;
@@ -88,5 +104,9 @@ export default {
   margin: 0;
   border-bottom: 2px solid transparent;
   color: #909399;
+}
+.el-dropdown-link {
+  cursor: pointer;
+  color: whitesmoke;
 }
 </style>

@@ -8,7 +8,6 @@ import PageHome from '@/pages/PageHome'
 import PageLibrary from '@/pages/PageLibrary'
 import PageManager from '@/pages/PageManager'
 import PageAdd from '@/pages/PageAdd'
-import PageDetail from '@/pages/PageDetail'
 
 Vue.use(Router)
 
@@ -51,13 +50,7 @@ var router = new Router({
       name: 'PageAdd',
       meta: { title: '书库 - 图书管理系统' },
       component: PageAdd
-    },
-    {
-      path: '/detail',
-      name: 'PageDetail',
-      meta: { title: '图书详情 - 图书管理系统' },
-      component: PageDetail
-    },
+    }
   ]
 })
 

@@ -186,38 +186,43 @@ export default {
       }
     },
     save() {
+      this.$message({
+        message: "Coming soon",
+        type: "info"
+      });
+      console.log(JSON.stringify(this.form));
       if (this.mode == "add") {
-        this.$fetch.apiAddBook(
-          this.form.title,
-          this.form.origin_title,
-          this.form.isbn,
-          this.form.author,
-          this.form.translator,
-          this.form.publisher,
-          this.form.pubdate,
-          this.form.category,
-          this.form.tags,
-          this.form.series,
-          this.form.binding,
-          this.form.pages,
-          this.form.price,
-          this.form.memo,
-          this.form.summary,
-          (success, rsp) => {
-            if (success) {
-              this.$message({
-                message: "保存成功",
-                type: "success"
-              });
-              this.goBack();
-            } else{
-              this.$message({
-                message: rsp,
-                type: "error"
-              });
-            }
-          });
-      } else {
+        // this.$fetch.apiAddBook(
+        //   this.form.title,
+        //   this.form.origin_title,
+        //   this.form.isbn,
+        //   this.form.author,
+        //   this.form.translator,
+        //   this.form.publisher,
+        //   this.form.pubdate,
+        //   this.form.category,
+        //   this.form.tags,
+        //   this.form.series,
+        //   this.form.binding,
+        //   this.form.pages,
+        //   this.form.price,
+        //   this.form.memo,
+        //   this.form.summary,
+        //   (success, rsp) => {
+        //     if (success) {
+        //       this.$message({
+        //         message: "保存成功",
+        //         type: "success"
+        //       });
+        //       this.goBack();
+        //     } else{
+        //       this.$message({
+        //         message: rsp,
+        //         type: "error"
+        //       });
+        //     }
+        //   });
+      } else if (this.mode == "edit") {
         
       }
     },

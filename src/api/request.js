@@ -1,10 +1,9 @@
 import axios from 'axios'
 import qs from 'qs'
-import { util } from './util';
 
 // axios 实例
 var mAxios = axios.create({
-  baseURL: util.BASE_URL,
+  baseURL: process.env.API_ROOT,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -15,7 +14,7 @@ var mAxios = axios.create({
 // request 拦截器
 mAxios.interceptors.request.use(
   config => {
-    config.method == 'get'? config.data = JSON.stringify(config.data) : config.data = qs.stringify(config.data)
+    config.data = config.method == 'get'? JSON.stringify(config.data) : qs.stringify(config.data)
     return config;
   },
   error => {

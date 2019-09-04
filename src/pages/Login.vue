@@ -1,7 +1,8 @@
 <template>
   <div class="screen">
     <el-row>
-      <el-col :span="6" :offset="15">
+      <el-col :xs="11" :sm="14" :md="16" :lg="16" :xl="17"></el-col>
+      <el-col :xs="10" :sm="8" :md="6" :lg="6" :xl="5">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span>欢迎登录</span>
@@ -11,7 +12,7 @@
               <el-input
 								v-model="form.username"
                 placeholder="请输入用户名"
-                prefix-icon="el-icon-mobile-phone"
+                prefix-icon="el-icon-user"
                 clearable
                 maxlength="20"></el-input>
             </el-form-item>
@@ -19,7 +20,7 @@
               <el-input
 								v-model="form.password"
                 placeholder="请输入密码"
-                prefix-icon="el-icon-view"
+                prefix-icon="el-icon-lock"
                 show-password
                 maxlength="20"
                 @keyup.enter.native="login"></el-input>
@@ -36,7 +37,7 @@
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "Login",
   data() {
     return {
       logging: false,

@@ -9,7 +9,7 @@
     </el-row>
     <el-row class="copyright">
       <p>Powered by Node.js</p>
-      <p>Copyright © 2015-2019 CCP. All rights reserved.</p>
+      <p>Copyright © 2015-{{currentYear}} CCP. All rights reserved.</p>
     </el-row>
   </div>
 </template>
@@ -19,10 +19,11 @@ export default {
   name: "Footer",
   data() {
     return {
+      currentYear: this.$util.getDateFormat(new Date(), 'yyyy'),
       links: [
         {
           "url": "https://cn.vuejs.org/v2/guide/",
-          "text": "Vue.js"
+          "text": "Vue"
         },
         {
           "url": "https://element.eleme.cn/2.9/#/zh-CN/component/installation",
@@ -52,7 +53,6 @@ export default {
   color: #fff;
   font-size: 14px;
   padding-top: 20px;
-  padding-bottom: 20px;
 }
 .el-link {
   color: #fff;
@@ -65,6 +65,5 @@ export default {
 }
 .copyright {
   text-align: center;
-  line-height: 150%;
 }
 </style>

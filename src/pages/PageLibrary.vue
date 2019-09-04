@@ -56,24 +56,22 @@ export default {
   methods: {
     getList() {
       this.loading = true;
-      if (this.listData.length == 0) {
-        this.$fetch.apiGetBooksList(
-          this.currentPage,
-          this.pageSize,
-          (success, rsp) => {
-            this.loading = false;
-            if (success) {
-              this.listData = rsp.list;
-              this.totalRecord = rsp.totalRecord;
-            } else {
-              this.$message({
-                message: rsp,
-                type: "error"
-              });
-            }
+      this.$fetch.apiGetBooksList(
+        this.currentPage,
+        this.pageSize,
+        (success, rsp) => {
+          this.loading = false;
+          if (success) {
+            this.listData = rsp.list;
+            this.totalRecord = rsp.totalRecord;
+          } else {
+            this.$message({
+              message: rsp,
+              type: "error"
+            });
           }
-        );
-      }
+        }
+      );
     },
     handleSizeChange(val) {
       this.pageSize = val;
@@ -111,7 +109,10 @@ export default {
         type: "warning"
       })
       .then(() => {
-        //
+        this.$message({
+          message: "暂无删除权限",
+          type: "error"
+        });
       })
       .catch(() => {});
     },

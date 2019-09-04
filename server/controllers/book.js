@@ -4,7 +4,8 @@ class MongoBook {
   // 查询所有图书
   getBooksList(index, offset) {
     return new Promise((resolve, reject) => {
-      Books.find({}, null, { skip: 0 }, (err, docs) => {
+      // 注：index 和 offset 是数字类型
+      Books.find({}).skip(Number(index)).limit(Number(offset)).exec((err, docs) => {
         if (err) {
           reject(err);
         } else {

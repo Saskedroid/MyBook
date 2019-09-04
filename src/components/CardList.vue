@@ -1,27 +1,25 @@
 <template>
   <el-table :data="tableData" stripe>
     <el-table-column label="封面" width="90">
-      <template  slot-scope="scope">
-        <el-button type="text" @click="handleClick(scope.row._id, 'view')">
-          <el-image style="width: 70px; height: 100px" :src="scope.row.image" fit="fill">
-            <div slot="error" class="image-slot">
-              <i class="el-icon-picture-outline"></i>
-            </div>
-          </el-image>
-        </el-button>
+      <template slot-scope="scope">
+        <el-image :src="scope.row.image" fit="contain">
+          <div slot="error" class="image-slot">
+            <i class="el-icon-picture-outline"></i>
+          </div>
+        </el-image>
       </template>
     </el-table-column>
     <el-table-column prop="title" label="书名" sortable>
       <template slot-scope="scope">
-        <h2>{{scope.row.title}}</h2>
+        <h2 @click="handleClick(scope.row._id, 'view')">{{scope.row.title}}</h2>
       </template>
     </el-table-column>
-    <el-table-column prop="isbn" label="书号"></el-table-column>
     <el-table-column prop="author" label="作者">
       <template slot-scope="scope">
         <span v-for="(item, index) in scope.row.author" :key="item" size="medium">{{item}}<span v-show="index<scope.row.author.length-1">、</span></span>
       </template>
     </el-table-column>
+    <el-table-column prop="isbn" label="书号"></el-table-column>
     <el-table-column prop="tags" label="标签" :filters="tagList" :filter-method="filterTag">
       <template slot-scope="scope">
         <el-tag v-for="item in scope.row.tags" :key="item.id" size="medium" type="info" effect="plain">{{item.name}}</el-tag>
@@ -89,8 +87,14 @@ export default {
 .el-table h2 {
   font-size: 18px;
   font-weight: bold;
+  cursor: pointer;
 }
 .el-table .el-tag {
   margin-right: 5px;
+}
+.el-image {
+  width: 70px;
+  height: 100px;
+  text-align: center;
 }
 </style>
